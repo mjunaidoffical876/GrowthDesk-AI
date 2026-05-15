@@ -11,6 +11,8 @@ const links = [
   { href: '/dashboard/invoices', label: 'Invoices' },
   { href: '/dashboard/ai-tools', label: 'AI Tools' },
   { href: '/dashboard/tickets', label: 'Tickets' },
+  { href: '/dashboard/team', label: 'Team' },
+  { href: '/dashboard/settings', label: 'Settings' },
 ];
 
 export function DashboardNav() {

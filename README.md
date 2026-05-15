@@ -73,3 +73,33 @@ git add .
 git commit -m "Add AI tools and support tickets modules"
 git push
 ```
+
+## Milestone 7 — Team & Workspace Settings
+
+Added operational SaaS administration foundation:
+
+- Team member list API
+- Add team member API
+- Update/deactivate team member API
+- Tenant workspace settings API
+- Team management dashboard page
+- Workspace settings dashboard page
+- Sidebar navigation updates
+
+### New Backend Routes
+
+```txt
+GET    /users
+POST   /users
+PATCH  /users/:id
+PATCH  /users/:id/deactivate
+GET    /tenants/me
+PATCH  /tenants/me
+```
+
+### New Frontend Routes
+
+```txt
+/dashboard/team
+/dashboard/settings
+```
