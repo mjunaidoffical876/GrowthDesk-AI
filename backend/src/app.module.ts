@@ -12,6 +12,7 @@ import { InvoicesModule } from './modules/invoices/invoices.module';
 import { AiModule } from './modules/ai/ai.module';
 import { TicketsModule } from './modules/tickets/tickets.module';
 import { SubscriptionsModule } from './modules/subscriptions/subscriptions.module';
+import { SuperAdminModule } from './modules/super-admin/super-admin.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { SubscriptionsModule } from './modules/subscriptions/subscriptions.modul
     AiModule,
     TicketsModule,
     SubscriptionsModule,
+    SuperAdminModule,
   ],
 })
 export class AppModule {}
