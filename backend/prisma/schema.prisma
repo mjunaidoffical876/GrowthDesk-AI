@@ -65,6 +65,8 @@ model User {
   createdProjects Project[]   @relation("ProjectCreator")
   assignedTasks   Task[]      @relation("TaskAssignee")
   aiRequests      AIRequest[]
+  assignedTickets SupportTicket[] @relation("TicketAssignee")
+  ticketReplies   TicketReply[]
 
   @@unique([tenantId, email])
   @@index([tenantId])
@@ -88,6 +90,7 @@ model Client {
   projects Project[]
   invoices Invoice[]
   tickets  SupportTicket[]
+  ticketReplies TicketReply[]
 
   @@index([tenantId])
 }
@@ -199,23 +202,46 @@ model InvoiceItem {
 }
 
 model SupportTicket {
-  id          String   @id @default(uuid())
-  tenantId    String
-  clientId    String?
-  subject     String
-  description String?
-  priority    String   @default("medium")
-  status      String   @default("open")
-  assignedTo  String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  deletedAt   DateTime?
+  id           String   @id @default(uuid())
+  tenantId     String
+  clientId     String?
+  subject      String
+  description  String?
+  priority     String   @default("medium")
+  status       String   @default("open")
+  assignedToId String?
+  createdById  String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  deletedAt    DateTime?
 
-  tenant Tenant  @relation(fields: [tenantId], references: [id])
-  client Client? @relation(fields: [clientId], references: [id])
+  tenant     Tenant        @relation(fields: [tenantId], references: [id])
+  client     Client?       @relation(fields: [clientId], references: [id])
+  assignedTo User?         @relation("TicketAssignee", fields: [assignedToId], references: [id])
+  replies    TicketReply[]
 
   @@index([tenantId])
   @@index([tenantId, status])
+  @@index([tenantId, priority])
+}
+
+model TicketReply {
+  id        String   @id @default(uuid())
+  ticketId  String
+  tenantId  String
+  userId    String?
+  clientId  String?
+  message   String
+  isInternal Boolean @default(false)
+  createdAt DateTime @default(now())
+
+  ticket SupportTicket @relation(fields: [ticketId], references: [id])
+  tenant Tenant        @relation(fields: [tenantId], references: [id])
+  user   User?         @relation(fields: [userId], references: [id])
+  client Client?       @relation(fields: [clientId], references: [id])
+
+  @@index([tenantId])
+  @@index([ticketId])
 }
 
 model AIRequest {
