@@ -6,6 +6,8 @@ const links = [
   { href: '/dashboard/overview', label: 'Overview' },
   { href: '/dashboard/clients', label: 'Clients' },
   { href: '/dashboard/leads', label: 'Leads' },
+  { href: '/dashboard/projects', label: 'Projects' },
+  { href: '/dashboard/tasks', label: 'Tasks' },
 ];
 
 export function DashboardNav() {
