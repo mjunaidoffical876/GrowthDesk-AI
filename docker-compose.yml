@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: growthdesk_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: growthdesk_user
+      POSTGRES_PASSWORD: growthdesk_password
+      POSTGRES_DB: growthdesk_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - growthdesk_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  growthdesk_postgres_data:

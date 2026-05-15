@@ -1,0 +1,13 @@
+{
+  "name": "growthdesk-ai",
+  "private": true,
+  "version": "0.2.0",
+  "description": "GrowthDesk AI - Multi-Tenant SaaS CRM starter build",
+  "scripts": {
+    "dev:backend": "cd backend && npm run start:dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "prisma:generate": "cd backend && npx prisma generate",
+    "prisma:migrate": "cd backend && npx prisma migrate dev",
+    "test:backend": "cd backend && npm test"
+  }
+}
