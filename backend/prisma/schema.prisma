@@ -28,6 +28,7 @@ model Tenant {
   logoUrl            String?
   website            String?
   subscriptionStatus String    @default("trial")
+  subscriptionPlanId String?
   trialEndsAt         DateTime?
   createdAt          DateTime  @default(now())
   updatedAt          DateTime  @updatedAt
@@ -41,8 +42,11 @@ model Tenant {
   invoices   Invoice[]
   tickets    SupportTicket[]
   aiRequests AIRequest[]
+  subscriptions Subscription[]
+  subscriptionPlan SubscriptionPlan? @relation(fields: [subscriptionPlanId], references: [id])
 
   @@index([slug])
+  @@index([subscriptionPlanId])
 }
 
 model User {
@@ -261,4 +265,47 @@ model AIRequest {
 
   @@index([tenantId])
   @@index([tenantId, toolType])
+}
+
+
+model SubscriptionPlan {
+  id            String   @id @default(uuid())
+  name          String   @unique
+  slug          String   @unique
+  description   String?
+  monthlyPrice  Decimal  @default(0)
+  yearlyPrice   Decimal  @default(0)
+  userLimit     Int      @default(3)
+  clientLimit   Int      @default(50)
+  projectLimit  Int      @default(20)
+  aiMonthlyLimit Int     @default(100)
+  features      Json?
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  tenants Tenant[]
+  subscriptions Subscription[]
+}
+
+model Subscription {
+  id            String   @id @default(uuid())
+  tenantId      String
+  planId        String
+  status        String   @default("trial")
+  billingCycle  String   @default("monthly")
+  currentPeriodStart DateTime?
+  currentPeriodEnd   DateTime?
+  cancelAtPeriodEnd  Boolean @default(false)
+  provider      String?
+  providerSubscriptionId String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  tenant Tenant @relation(fields: [tenantId], references: [id])
+  plan   SubscriptionPlan @relation(fields: [planId], references: [id])
+
+  @@index([tenantId])
+  @@index([planId])
+  @@index([tenantId, status])
 }

@@ -103,3 +103,33 @@ PATCH  /tenants/me
 /dashboard/team
 /dashboard/settings
 ```
+
+## Milestone 8 — Subscription Plans + Usage Foundation
+
+This milestone adds the first SaaS monetization foundation:
+
+- Subscription plan model
+- Tenant subscription history model
+- Default Starter/Growth/Scale plans
+- Tenant plan selection endpoint
+- Usage counters for users, clients, projects, and monthly AI requests
+- Dashboard subscription page
+- Sidebar subscription navigation
+
+### New Backend Endpoints
+
+```http
+GET /subscriptions/plans
+GET /subscriptions/me
+POST /subscriptions/change-plan
+POST /subscriptions/plans
+PATCH /subscriptions/plans/:id
+```
+
+### New Frontend Page
+
+```txt
+/dashboard/subscription
+```
+
+Payment provider integration is intentionally kept as manual foundation here. Stripe checkout/webhooks should be connected in the next billing milestone.
