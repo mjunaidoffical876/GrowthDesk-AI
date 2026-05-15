@@ -8,7 +8,7 @@ GrowthDesk AI is a multi-tenant SaaS starter system built with:
 
 ## Current Milestone
 
-Milestone 3 includes:
+Milestone 4 includes:
 
 - Multi-tenant SaaS foundation
 - Auth register/login flow
@@ -20,6 +20,11 @@ Milestone 3 includes:
 - Tasks CRUD module
 - Project detail workspace
 - Kanban-style task board foundation
+- Invoice CRUD module
+- Invoice line items
+- Tax, discount, subtotal, total, and paid amount calculation
+- Manual mark-as-paid flow
+- Invoice list, create invoice, and invoice detail UI
 - Frontend dashboard navigation
 - Docker PostgreSQL setup
 - Prisma schema
@@ -36,8 +41,10 @@ GrowthDesk-AI/
 │       ├── clients/
 │       ├── leads/
 │       ├── projects/
-│       └── tasks/
+│       ├── tasks/
+│       └── invoices/
 ├── frontend/
+│   ├── app/dashboard/invoices/
 │   ├── app/dashboard/projects/
 │   ├── app/dashboard/tasks/
 │   └── services/
@@ -96,11 +103,22 @@ Extract this ZIP inside your cloned repository folder, then run:
 
 ```bash
 git add .
-git commit -m "Add projects tasks and Kanban foundation"
+git commit -m "Add invoice billing module"
 git push -u origin main
 ```
 
-## Milestone 3 API Endpoints
+## Milestone 4 API Endpoints
+
+### Invoices
+
+```txt
+GET    /invoices
+GET    /invoices/:id
+POST   /invoices
+PATCH  /invoices/:id
+PATCH  /invoices/:id/mark-paid
+DELETE /invoices/:id
+```
 
 ### Projects
 
@@ -123,12 +141,15 @@ PATCH  /tasks/:id
 DELETE /tasks/:id
 ```
 
+## Notes
+
+The frontend production build was checked locally. Backend Prisma validation requires Prisma engine download, so run `npx prisma generate` and `npx prisma validate` on your machine or GitHub Actions with internet access.
+
 ## Next Milestone
 
-Milestone 4 will add:
+Milestone 5 will add:
 
-- Invoice module
-- Invoice items
-- PDF-ready invoice structure
-- Payment status management
-- Client invoice workflow
+- Support tickets module
+- Ticket replies/comments
+- Priority and status workflow
+- Client support workspace
