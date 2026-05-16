@@ -13,6 +13,7 @@ import { AiModule } from './modules/ai/ai.module';
 import { TicketsModule } from './modules/tickets/tickets.module';
 import { SubscriptionsModule } from './modules/subscriptions/subscriptions.module';
 import { SuperAdminModule } from './modules/super-admin/super-admin.module';
+import { ClientPortalModule } from './modules/client-portal/client-portal.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { SuperAdminModule } from './modules/super-admin/super-admin.module';
     TicketsModule,
     SubscriptionsModule,
     SuperAdminModule,
+    ClientPortalModule,
   ],
 })
 export class AppModule {}

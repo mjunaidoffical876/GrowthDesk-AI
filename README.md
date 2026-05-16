@@ -151,3 +151,16 @@ Added platform owner control center:
   - `/super-admin/plans`
 
 This milestone gives GrowthDesk AI a platform-level management layer for monitoring tenants, usage, invoices, subscriptions, tickets, and AI activity.
+
+## Milestone 10 - Client Portal
+
+Added client-facing portal foundation:
+
+- Client overview dashboard
+- Client project progress view
+- Client invoices and payment status view
+- Client support ticket creation and history
+- Backend tenant-safe client portal APIs
+- Portal routes under `/client-portal/*`
+
+Client portal access is linked by authenticated user email matching the tenant client record email.
