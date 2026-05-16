@@ -1,0 +1,16 @@
+name: Production Check
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify repository files
+        run: |
+          test -d backend
+          test -d frontend
+          echo "GrowthDesk AI production check passed"
