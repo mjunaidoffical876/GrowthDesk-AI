@@ -187,3 +187,22 @@ npx prisma format
 npx prisma migrate dev --name add_activity_logs
 npm run test -- --runInBand
 ```
+
+## Milestone 12 — Beta Launch System
+
+Added:
+- Public SaaS landing page refinement
+- Pricing page
+- Beta onboarding page
+- Demo navigation page
+- Waitlist page
+- Beta launch guide
+- Deployment guide
+- Prisma demo seed foundation
+
+### Seed Demo Data
+
+```bash
+cd backend
+npm run prisma:seed
+```
