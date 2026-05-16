@@ -309,3 +309,21 @@ model Subscription {
   @@index([planId])
   @@index([tenantId, status])
 }
+
+
+model ActivityLog {
+  id        String   @id @default(uuid())
+  tenantId  String
+  userId    String?
+  action    String
+  module    String
+  meta      Json?
+  ipAddress String?
+  createdAt DateTime @default(now())
+
+  tenant Tenant @relation(fields: [tenantId], references: [id])
+
+  @@index([tenantId])
+  @@index([tenantId, module])
+  @@index([tenantId, createdAt])
+}

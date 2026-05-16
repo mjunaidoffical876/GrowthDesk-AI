@@ -14,6 +14,9 @@ import { TicketsModule } from './modules/tickets/tickets.module';
 import { SubscriptionsModule } from './modules/subscriptions/subscriptions.module';
 import { SuperAdminModule } from './modules/super-admin/super-admin.module';
 import { ClientPortalModule } from './modules/client-portal/client-portal.module';
+import { ActivityLogsModule } from './modules/activity-logs/activity-logs.module';
+import { HealthModule } from './modules/health/health.module';
+
 
 @Module({
   imports: [
@@ -32,6 +35,8 @@ import { ClientPortalModule } from './modules/client-portal/client-portal.module
     SubscriptionsModule,
     SuperAdminModule,
     ClientPortalModule,
+    ActivityLogsModule,
+    HealthModule,
   ],
 })
 export class AppModule {}

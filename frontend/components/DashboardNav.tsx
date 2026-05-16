@@ -14,6 +14,7 @@ const links = [
   { href: '/dashboard/team', label: 'Team' },
   { href: '/dashboard/subscription', label: 'Subscription' },
   { href: '/dashboard/settings', label: 'Settings' },
+  { href: '/dashboard/activity-logs', label: 'Activity Logs' },
 ];
 
 export function DashboardNav() {

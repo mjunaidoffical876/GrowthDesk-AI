@@ -164,3 +164,26 @@ Added client-facing portal foundation:
 - Portal routes under `/client-portal/*`
 
 Client portal access is linked by authenticated user email matching the tenant client record email.
+
+
+## Milestone 11 — Production Hardening
+
+Added production-readiness foundations:
+
+- Centralized HTTP error response filter
+- Request logging interceptor
+- Health check endpoint: `GET /health`
+- RBAC permission decorator and guard foundation
+- Activity logs backend module
+- Tenant activity/audit trail model
+- Activity logs dashboard page
+- Prisma schema updated with `ActivityLog`
+
+After extracting this milestone, run in `backend/`:
+
+```bash
+npm install
+npx prisma format
+npx prisma migrate dev --name add_activity_logs
+npm run test -- --runInBand
+```
